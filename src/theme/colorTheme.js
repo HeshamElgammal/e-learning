@@ -12,5 +12,6 @@ export const appColors = {
   blue: '#324376',
   yellow: '#F5DD90',
   error: '#a00',
-  six:"#888"
+  six:"#888",
+  whiteBlue:"#7DA1CC"
 };

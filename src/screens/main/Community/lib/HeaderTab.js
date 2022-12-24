@@ -30,9 +30,9 @@ export default HeaderTab;
 
 const styles = StyleSheet.create({
   container: {
-    width: '97%',
+    width: '94%',
     height: RFValue(45),
-    backgroundColor: appColors.primary,
+    backgroundColor: '#eee',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
     borderRadius: appSizes.spacing_s,
     borderColor: '#999',
     borderWidth: selectedBar == bar ? 0.6 : 0,
+    backgroundColor: selectedBar == bar ? appColors.primary : "#eee",
   }),
   title: (selectedBar, bar) => ({
     color: selectedBar == bar ? appColors.white : appColors.placeholder,

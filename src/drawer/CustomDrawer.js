@@ -78,7 +78,7 @@ const CustomDrawer = ({style, navigation}) => {
                     {
                       backgroundColor:
                         selected.page == index
-                          ? appColors.fifth
+                          ? appColors.whiteBlue
                           : appColors.white,
                     },
                   ]}
@@ -112,7 +112,7 @@ const CustomDrawer = ({style, navigation}) => {
                     {
                       backgroundColor:
                         selected.tetorial == index
-                          ? appColors.fifth
+                          ? appColors.whiteBlue
                           : appColors.white,
                     },
                   ]}
@@ -152,7 +152,7 @@ const CustomDrawer = ({style, navigation}) => {
           }}
           style={[
             styles.footer,
-            {backgroundColor: appColors.fifth, paddingLeft: '10%'},
+            {backgroundColor: appColors.whiteBlue, paddingLeft: '10%'},
           ]}>
           <Image style={[styles.imgIcon]} source={Logout} />
 

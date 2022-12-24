@@ -11,12 +11,12 @@ import {useMemo} from 'react';
 import {appColors, appSizes} from '../../../../theme';
 import {RFValue} from 'react-native-responsive-fontsize';
 
-const Courses = ({Courses}) => {
-  const Coursess = useMemo(() => {
+const Members = ({Members}) => {
+  const Mems = useMemo(() => {
     return (
       <>
         <FlatList
-          data={Courses}
+          data={Members}
           renderItem={({item, index}) => {
             return (
               <>
@@ -25,7 +25,10 @@ const Courses = ({Courses}) => {
                     source={{uri: 'https://picsum.photos/1850/700'}}
                     style={styles.img}
                   />
-                  <Text style={styles.title}>{item.courseName}</Text>
+                  <Text style={styles.titleF}>{item.member}</Text>
+                  <TouchableOpacity style={styles.btnF}>
+                    <Text style={styles.titleF}>Follow</Text>
+                  </TouchableOpacity>
                 </TouchableOpacity>
               </>
             );
@@ -33,19 +36,19 @@ const Courses = ({Courses}) => {
         />
       </>
     );
-  }, [Courses]);
+  }, [Members]);
   return (
     <>
-      <View style={styles.listContainer}>{Coursess}</View>
+      <View style={styles.listContainer}>{Mems}</View>
     </>
   );
 };
 
-export default Courses;
+export default Members;
 
 const styles = StyleSheet.create({
   listContainer: {
-    width: '97%',
+    width: '100%',
     marginTop: appSizes.spacing_m,
   },
   itemContainer: {
@@ -57,7 +60,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#eee',
     paddingHorizontal: appSizes.padding_s,
     marginBottom: appSizes.s,
-    alignSelf: 'center',
+    alignSelf:"center"
   },
   img: {
     width: RFValue(40),
@@ -65,7 +68,16 @@ const styles = StyleSheet.create({
     borderRadius: RFValue(20),
     marginRight: appSizes.spacing_s,
   },
-  title: {
+  btnF: {
+    position: 'absolute',
+    right: 30,
+    backgroundColor: appColors.white,
+    zIndex: 1000,
+    top: 20,
+    padding: RFValue(8),
+    borderRadius: 5,
+  },
+  titleF: {
     fontSize: RFValue(12),
     color: appColors.primary,
   },

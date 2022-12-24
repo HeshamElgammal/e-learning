@@ -5,7 +5,7 @@ import DrawerView from '../../DrawerView';
 const Notifications = ({navigation}) => {
   return (
     <DrawerView navigation={navigation} titleHeader={"Notifications"}>
-      {/* <Text style={{color: '#f00'}}>Notifications</Text> */}
+      <Text style={{color: '#f00'}}>Notifications</Text>
     </DrawerView>
   );
 };

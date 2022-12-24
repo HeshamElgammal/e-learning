@@ -14,6 +14,7 @@ import {useState} from 'react';
 import Header from './lib/header';
 import HeaderTab from './lib/HeaderTab';
 import Courses from './lib/Courses';
+import Members from './lib/Members';
 
 const Community = ({navigation}) => {
   const [selectedBar, setSelectedBar] = useState('Courses');
@@ -25,7 +26,10 @@ const Community = ({navigation}) => {
       <Header />
       <HeaderTab selectedBar={selectedBar} setSelectedBar={setSelectedBar} />
       {selectedBar == 'Courses' && (
-        <Courses Courses={[{courseName: 'Ui/Ux'},{courseName: 'React'}]} />
+        <Courses Courses={[{courseName: 'Ui/Ux'}, {courseName: 'React'}]} />
+      )}
+      {selectedBar == 'Members' && (
+        <Members Members={[{member: 'Ahmed'}, {member: 'Hesham'}]} />
       )}
     </DrawerView>
   );
