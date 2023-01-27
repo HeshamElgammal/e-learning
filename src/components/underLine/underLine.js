@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import { appColors, appSizes } from '../../theme';
+import {appColors, appSizes} from 'theme';
 
 const UnderLine = () => {
   return (
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   smallLine: {
     width: 30,
     height: 6,
-    backgroundColor: appColors.fourth,
+    backgroundColor: appColors.whiteBlue,
     borderRadius: 17,
   },
   iconsConatner: {
@@ -31,13 +31,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     paddingTop: 2,
-    marginLeft: appSizes.padding_x,
-    marginBottom:appSizes.spacing_s
+    marginLeft: 2,
+    marginBottom: appSizes.spacing_s,
+    marginLeft:appSizes.spacing_m
+
   },
   smallCircle: {
     width: 10,
     height: 6,
-    backgroundColor: appColors.fourth,
+    backgroundColor: appColors.whiteBlue,
     borderRadius: 90,
     marginRight: 2,
   },

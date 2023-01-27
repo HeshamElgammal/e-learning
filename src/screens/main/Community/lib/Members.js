@@ -10,6 +10,7 @@ import React from 'react';
 import {useMemo} from 'react';
 import {appColors, appSizes} from '../../../../theme';
 import {RFValue} from 'react-native-responsive-fontsize';
+import { User } from 'svgs';
 
 const Members = ({Members}) => {
   const Mems = useMemo(() => {
@@ -21,10 +22,11 @@ const Members = ({Members}) => {
             return (
               <>
                 <TouchableOpacity style={styles.itemContainer}>
-                  <Image
+                  {/* <Image
                     source={{uri: 'https://picsum.photos/1850/700'}}
                     style={styles.img}
-                  />
+                  /> */}
+                  <User style={styles.img} width={40} height={40}/>
                   <Text style={styles.titleF}>{item.member}</Text>
                   <TouchableOpacity style={styles.btnF}>
                     <Text style={styles.titleF}>Follow</Text>

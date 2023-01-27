@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {appColors} from '../../../../theme/colorTheme';
-import {appSizes} from '../../../../theme';
+import {appColors, Fonts} from 'theme';
+import {appSizes} from 'theme';
 import {RFValue} from 'react-native-responsive-fontsize';
 
 const Header = ({title, subTitle}) => {
@@ -31,13 +31,16 @@ const styles = StyleSheet.create({
   titlee: color => ({
     fontSize: 25,
     color: color,
-    marginLeft: appSizes.padding_l,
+    // marginLeft: appSizes.padding_l,
     marginBottom: appSizes.spacing_s,
+    fontFamily: Fonts.PoppinsBoldItalic,
+    marginLeft:appSizes.spacing_m
+
   }),
   smallLine: {
     width: 30,
     height: 6,
-    backgroundColor: appColors.fourth,
+    backgroundColor: appColors.whiteBlue,
     borderRadius: 17,
   },
   iconsConatner: {
@@ -50,12 +53,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     // paddingTop: 3,
-    marginLeft: appSizes.padding_l,
+    marginLeft:appSizes.spacing_m
+
   },
   smallCircle: {
     width: 10,
     height: 6,
-    backgroundColor: appColors.fourth,
+    backgroundColor: appColors.whiteBlue,
     borderRadius: 90,
     marginRight: 2,
   },

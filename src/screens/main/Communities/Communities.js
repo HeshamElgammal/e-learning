@@ -1,7 +1,7 @@
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import DrawerView from '../../DrawerView';
-import {appSizes} from '../../../theme';
+import DrawerView from 'screens/DrawerView';
+import {appSizes} from 'theme';
 
 const Communities = ({navigation}) => {
   return (
@@ -10,7 +10,7 @@ const Communities = ({navigation}) => {
       style={styles.container}
       titleHeader="COmmunity">
       <ImageBackground
-        source={{uri: 'https://picsum.photos/1850/800'}}
+        source={{uri: 'https://picsum.photos/1900/1000'}}
         style={{width: appSizes.with, height: '100%'}}></ImageBackground>
     </DrawerView>
   );

@@ -9,7 +9,7 @@ import {
 
 import DrawerNavigation from './Drawer';
 import AuthStack from './Auth';
-import {AUTHENTICATIONS} from '../utils/config';
+import {AUTHENTICATIONS} from 'config';
 const Stack = createSharedElementStackNavigator();
 const Root = () => {
   const authenticted = useSelector(state => state.user.authenticated);

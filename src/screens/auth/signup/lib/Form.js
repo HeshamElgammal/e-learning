@@ -14,9 +14,9 @@ import * as Yup from 'yup';
 import {useDispatch} from 'react-redux';
 import {saveUser} from '../../../../redux/actions/UserActions/saveUser';
 import {changeAuth} from '../../../../redux/actions/AuthActions/changeAuth';
-import {appColors} from '../../../../theme/colorTheme';
-import {AUTHENTICATIONS} from '../../../../utils/config';
-import {CustomBtnAuth, CustomTextInput} from '../../../../components';
+import {appColors} from 'theme/colorTheme';
+import {AUTHENTICATIONS} from 'config';
+import {CustomBtnAuth, CustomTextInput} from 'components';
 
 const Form = () => {
   const dispatch = useDispatch();

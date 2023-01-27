@@ -5,7 +5,7 @@ import {
   CardStyleInterpolators,
   createStackNavigator,
 } from '@react-navigation/stack';
-import {Login, SignUp} from '../screens';
+import {Login, SignUp} from 'screens';
 
 const Stack = createSharedElementStackNavigator();
 const AuthStack = () => {

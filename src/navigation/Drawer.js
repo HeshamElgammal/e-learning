@@ -2,9 +2,18 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 import React, {useRef} from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
-import {Activity, Communities, Community, CourseInfo, Home, Notifications, Setting} from '../screens';
+import {
+  Activity,
+  Communities,
+  Community,
+  CourseInfo,
+  Home,
+  Notifications,
+  Quizes,
+  Setting,
+} from 'screens';
 import {interpolate, useAnimatedStyle} from 'react-native-reanimated';
-import CustomDrawer from '../drawer/CustomDrawer';
+import CustomDrawer from 'src/drawer/CustomDrawer';
 import Main from './Main';
 
 const Drawer = createDrawerNavigator();
@@ -21,7 +30,7 @@ const DrawerNavigation = () => {
         drawerStyle: styles.drawerStyles,
         drawerType: 'front',
         // overlayColor: 'transparent',
-        swipeEdgeWidth: Platform.OS == 'android' && 180,
+        swipeEdgeWidth: Platform.OS == 'android' && 60,
         sceneContainerStyle: styles.sceneStyle,
         headerShown: false,
       }}
@@ -30,6 +39,7 @@ const DrawerNavigation = () => {
       <Drawer.Screen name="CourseInfo" component={CourseInfo} />
       <Drawer.Screen name="Community" component={Community} />
       <Drawer.Screen name="Communities" component={Communities} />
+      <Drawer.Screen name="Quizes" component={Quizes} />
 
       <Drawer.Screen name="Settings" component={Setting} />
       <Drawer.Screen name="Activities" component={Activity} />

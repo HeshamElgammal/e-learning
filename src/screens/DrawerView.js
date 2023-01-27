@@ -1,24 +1,36 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React from 'react';
 import Animated, {interpolate, useAnimatedStyle} from 'react-native-reanimated';
-import {Control} from '../assets/imgs';
-import { appColors } from '../theme/colorTheme';
+import {Control} from 'imgs';
+import {List} from 'svgs';
+import {appColors} from 'theme/colorTheme';
+import {Fonts} from 'theme';
 
 const DrawerView = ({children, style, navigation, titleHeader}) => {
   return (
-    <Animated.View style={[styles.container, style]}>
-      <View style={[styles.header]}>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.toggleDrawer();
-          }}>
-          <Image style={styles.iconHeader} source={Control} />
-        </TouchableOpacity>
-        <Text style={styles.titleHeader}></Text>
-        <View style={styles.iconHeader} />
-      </View>
-      {children}
-    </Animated.View>
+    <ScrollView contentContainerStyle={[styles.container]}>
+      <Animated.View style={[styles.container, style, {alignItems: 'center'}]}>
+        <View style={[styles.header]}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.toggleDrawer();
+            }}>
+            {/* <Image style={styles.iconHeader} source={Control} /> */}
+            <List style={styles.iconHeader} width={35} height={40} />
+          </TouchableOpacity>
+          <Text style={styles.titleHeader}>{`${titleHeader}`}</Text>
+          <View style={styles.iconHeader} />
+        </View>
+        {children}
+      </Animated.View>
+    </ScrollView>
   );
 };
 
@@ -44,13 +56,14 @@ const styles = StyleSheet.create({
     // elevation:3
   },
   iconHeader: {
-    width: 30,
-    height: 30,
+    width: 35,
+    height: 40,
     marginLeft: 10,
   },
   titleHeader: {
     color: appColors.primary,
     fontSize: 20,
     fontWeight: '600',
+    fontFamily: Fonts.PoppinsBoldItalic,
   },
 });

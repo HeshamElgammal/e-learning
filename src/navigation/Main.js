@@ -5,7 +5,7 @@ import {
   CardStyleInterpolators,
   createStackNavigator,
 } from '@react-navigation/stack';
-import {CourseInfo, Home} from '../screens';
+import {CourseInfo, Home} from 'screens';
 const Stack = createSharedElementStackNavigator();
 
 const Main = () => {

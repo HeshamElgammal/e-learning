@@ -1,4 +1,4 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
 import {useDrawerProgress} from '@react-navigation/drawer';
@@ -9,13 +9,14 @@ import Animated, {
   withRepeat,
   withTiming,
 } from 'react-native-reanimated';
-import DrawerView from '../../DrawerView';
+import DrawerView from 'screens/DrawerView';
+
 // import {DrawerActions} from '@react-navigation/native';
 import Header from './lib/Header';
 import List from './lib/List';
-import {appSizes} from '../../../theme';
+import {appSizes} from 'theme';
 import {RFValue} from 'react-native-responsive-fontsize';
-import {Banner} from '../../../assets/imgs';
+import {Banner} from 'imgs';
 import {useEffect} from 'react';
 
 const Home = ({navigation}) => {
@@ -33,18 +34,24 @@ const Home = ({navigation}) => {
   return (
     <DrawerView
       navigation={navigation}
-      style={styles.container}
+      // style={styles.container}
       titleHeader="Home">
-      <Header />
-      <View style={styles.mainContainer}>
-        <Animated.Image
-          style={[styles.imgBanner, animatedStyle]}
-          source={Banner}
-          resizeMethod="resize"
-          resizeMode="cover"
-        />
-      </View>
-      <List />
+      {/* <ScrollView style={{}} nestedScrollEnabled> */}
+        <View style={styles.container}>
+          <Header />
+
+          <View style={styles.mainContainer}>
+            <Animated.Image
+              style={[styles.imgBanner, animatedStyle]}
+              source={Banner}
+              resizeMethod="resize"
+              resizeMode="cover"
+            />
+          </View>
+          <List page="CourseInfo" title="Our Courses" />
+          <List page="Quizes" title="Our Quizes" />
+        </View>
+      {/* </ScrollView> */}
     </DrawerView>
   );
 };
@@ -52,13 +59,24 @@ const Home = ({navigation}) => {
 export default Home;
 
 const styles = StyleSheet.create({
-  container: {},
-  imgBanner: {width: '100%', height: '100%'},
+  container: {
+    width: '100%',
+    // alignItems: 'center',
+    // backgroundColor: '#f00',
+    // paddingLeft: appSizes.padding_m,
+  },
+  imgBanner: {
+    width: appSizes.with / 1.6,
+    height: '100%',
+    // alignSelf: 'flex-start',
+  },
   mainContainer: {
     width: appSizes.with / 1.1,
-    height: RFValue(150),
+    height: RFValue(100),
     borderRadius: RFValue(10),
     overflow: 'hidden',
     backgroundColor: '#eee',
+    alignItems:"center",
+    marginLeft:appSizes.spacing_m
   },
 });

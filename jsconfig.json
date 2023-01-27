@@ -1,0 +1,44 @@
+
+{
+    "compilerOptions": {
+      "target": "esnext",                      
+      "module": "commonjs",                    
+      "lib": ["es2017"],                       
+      "allowJs": true,                                 
+      "jsx": "react-native",                          
+      "noEmit": true,                                
+      "isolatedModules": true,                  
+      "strict": true,                         
+      "moduleResolution": "node",                               
+      "allowSyntheticDefaultImports": true,    
+      "esModuleInterop": true,    
+      "baseUrl": "./",
+      "paths": {
+        // "api": ["./src/api/index.ts"],
+        // "api/*": ["./src/api/*"],
+        "components": ["./src/components/index.js"],
+        "components/*": ["./src/components/*"],
+        "store": ["src/store/index.js"],
+        "store/*": ["./src/store/*"],
+        "navigation": ["src/navigation/index.jx"],
+        "config/*": ["./src/utils/*"],
+        "config": ["./src/utils/config.js"],
+        "theme": ["src/theme/index.js"],
+        "theme/*": ["./src/theme/*"],
+        "svgs": ["./src/assets/svg.js"],
+        "svgs/*": ["./src/assets/*"],
+        "imgs": ["./src/assets/imgs.js"],
+        "imgs/*": ["./src/assets/*"],
+        "screens": ["./src/screens/index.js"],
+        "screens/*": ["./src/screens/*"],
+        // "constants": ["./src/constants/index.js"],
+        // "constants/*": ["./src/constants/*"],
+        },              
+      "skipLibCheck": false,                   
+      "resolveJsonModule": true                
+    },
+    "exclude": [
+      "node_modules", "babel.config.js", "metro.config.js", "jest.config.js"
+    ]
+  }
+  

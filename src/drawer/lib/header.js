@@ -5,7 +5,8 @@ import {appColors} from '../../theme/colorTheme';
 import Animated from 'react-native-reanimated';
 import {RFValue} from 'react-native-responsive-fontsize';
 import {appSizes} from '../../theme';
-import { Hesham } from '../../assets/imgs';
+import {Hesham} from '../../assets/imgs';
+import {User} from '../../assets/svgs';
 
 const Header = ({ViewStyle2, postion}) => {
   return (
@@ -31,7 +32,7 @@ const Header = ({ViewStyle2, postion}) => {
           style={{flex: 0.2, height: '100%', backgroundColor: appColors.yellow}}
         />
       </MaskedView> */}
-      <Image style={styles.avatar} source={Hesham} />
+      <User style={styles.avatar} width={50} height={50}/>
       <Text style={styles.titleHeader}>Hi Hesham 👋</Text>
     </Animated.View>
   );
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     height: RFValue(50),
     borderRadius: RFValue(25),
     marginRight: RFValue(5),
-    backgroundColor: appColors.blue,
+    // backgroundColor: appColors.blue,
     marginLeft: appSizes.spacing_s,
   },
   titleHeader: {

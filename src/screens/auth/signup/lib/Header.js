@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {appColors} from '../../../../theme/colorTheme';
+import {appColors} from 'theme/colorTheme';
 
 const Header = ({title, subTitle}) => {
   return (

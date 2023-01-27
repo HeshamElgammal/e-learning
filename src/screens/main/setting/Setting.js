@@ -1,6 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import DrawerView from '../../DrawerView';
+import DrawerView from 'screens/DrawerView';
+
 
 const Setting = ({navigation}) => {
   return (

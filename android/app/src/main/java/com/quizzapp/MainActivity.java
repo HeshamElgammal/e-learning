@@ -5,6 +5,8 @@ import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
 
+  import android.content.Intent; // <--- import 
+  import android.content.res.Configuration; // <--- import
 public class MainActivity extends ReactActivity {
 
   /**
@@ -19,6 +21,13 @@ public class MainActivity extends ReactActivity {
 protected void onCreate(Bundle savedInstanceState) {
   super.onCreate(null);
 }
+@Override
+      public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Intent intent = new Intent("onConfigurationChanged");
+        intent.putExtra("newConfig", newConfig);
+        this.sendBroadcast(intent);
+    }
   /**
    * Returns the instance of the {@link ReactActivityDelegate}. There the RootView is created and
    * you can specify the rendered you wish to use (Fabric or the older renderer).

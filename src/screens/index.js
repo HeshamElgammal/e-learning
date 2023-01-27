@@ -7,6 +7,7 @@ import SignUp from './auth/signup/SignUp';
 import CourseInfo from './main/CourseInfo/CourseInfo';
 import Community from './main/Community/Community';
 import Communities from './main/Communities/Communities';
+import Quizes from './main/quizes/quizes';
 // // export * from './main/home';
 // // export * from './main/notifications';
 export {
@@ -19,4 +20,5 @@ export {
   CourseInfo,
   Community,
   Communities,
+  Quizes
 };

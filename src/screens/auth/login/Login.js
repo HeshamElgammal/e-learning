@@ -11,10 +11,10 @@ import {
 } from 'react-native';
 import React from 'react';
 
-import {appColors} from '../../../theme/colorTheme';
+import {appColors} from 'theme/colorTheme';
 import Form from './lib/Form';
 import Header from './lib/Header';
-import {OrDividor} from '../../../components';
+import {OrDividor} from 'components';
 const Login = ({navigation}) => {
   return (
     <ScrollView style={styles.container}>

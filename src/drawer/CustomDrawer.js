@@ -13,29 +13,38 @@ import {
   useDrawerProgress,
 } from '@react-navigation/drawer';
 import Animated, {interpolate, useAnimatedStyle} from 'react-native-reanimated';
-import {appColors} from '../theme/colorTheme';
+import {appColors, Fonts} from 'theme';
 import Header from './lib/header';
 import {
   Activity,
   HomeIcon,
-  List,
+  // List,
   Logout,
-  Notification,
+  // Notification,
+  // Setting,
+} from 'imgs';
+import {
   Setting,
-} from '../assets/imgs';
+  Home,
+  Exit,
+  Notification,
+  User,
+  List,
+  Community,
+} from 'svgs';
 import {useDispatch} from 'react-redux';
 import {changeAuth} from '../redux/actions/AuthActions/changeAuth';
-import {AUTHENTICATIONS} from '../utils/config';
+import {AUTHENTICATIONS} from 'config';
 import {RFValue} from 'react-native-responsive-fontsize';
 const {width, height} = Dimensions.get('window');
 const CustomDrawer = ({style, navigation}) => {
   const dispatch = useDispatch();
   const list = [
-    {label: 'Home', icon: HomeIcon},
-    {label: 'Settings', icon: Setting},
-    {label: 'Activities', icon: Activity},
-    {label: 'Notifications', icon: Notification},
-    {label: 'Communities', icon: List},
+    {label: 'Home', Icon: Home},
+    {label: 'Settings', Icon: Setting},
+    // {label: 'Activities', Icon: Activity},
+    {label: 'Notifications', Icon: Notification},
+    {label: 'Communities', Icon: Community},
   ];
   const list2 = ['React', 'AI', 'Skills', 'Languages', 'Data'];
   const [selected, setSelected] = useState({page: 0, tetorial: null});
@@ -89,7 +98,9 @@ const CustomDrawer = ({style, navigation}) => {
 
                     navigation.navigate(item.label);
                   }}>
-                  <Image style={styles.imgIcon} source={item.icon} />
+                  {/* <Image style={styles.imgIcon} source={item.icon} /> */}
+                  <item.Icon style={styles.imgIcon} width={30} height={30} />
+
                   <Text style={styles.titleItem}>{item.label}</Text>
                 </TouchableOpacity>
               </>
@@ -116,11 +127,11 @@ const CustomDrawer = ({style, navigation}) => {
                           : appColors.white,
                     },
                   ]}
-                  key={index}
+                  key={`hello-${index}`}
                   onPress={() => {
                     setSelected(prev => ({...prev, ['tetorial']: index}));
                     setSelected(prev => ({...prev, ['page']: null}));
-                    navigation.navigate('Community');
+                    navigation.navigate('Community',{community:item});
                   }}>
                   <Image
                     style={[
@@ -152,9 +163,9 @@ const CustomDrawer = ({style, navigation}) => {
           }}
           style={[
             styles.footer,
-            {backgroundColor: appColors.whiteBlue, paddingLeft: '10%'},
+            {backgroundColor: appColors.whiteBlue, paddingLeft: 16},
           ]}>
-          <Image style={[styles.imgIcon]} source={Logout} />
+          <Exit style={[styles.imgIcon]} width={40} height={30} />
 
           <Text style={[styles.titleItem, {color: appColors.primary}]}>
             Log out
@@ -185,6 +196,8 @@ const styles = StyleSheet.create({
     color: appColors.primary,
     fontSize: 18,
     fontWeight: '600',
+    fontFamily: Fonts.PoppinsBold,
+    
   },
   section: {
     backgroundColor: '#FFFF',
@@ -216,6 +229,8 @@ const styles = StyleSheet.create({
     color: appColors.input,
     fontSize: 16,
     fontWeight: '500',
+    fontFamily: Fonts.PoppinsExtraBoldItalic,
+
   },
   footer: {
     alignItems: 'center',
