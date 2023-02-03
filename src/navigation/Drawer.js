@@ -10,6 +10,7 @@ import {
   Home,
   Notifications,
   Quizes,
+  Search,
   Setting,
 } from 'screens';
 import {interpolate, useAnimatedStyle} from 'react-native-reanimated';
@@ -40,6 +41,7 @@ const DrawerNavigation = () => {
       <Drawer.Screen name="Community" component={Community} />
       <Drawer.Screen name="Communities" component={Communities} />
       <Drawer.Screen name="Quizes" component={Quizes} />
+      <Drawer.Screen name="Search" component={Search} />
 
       <Drawer.Screen name="Settings" component={Setting} />
       <Drawer.Screen name="Activities" component={Activity} />

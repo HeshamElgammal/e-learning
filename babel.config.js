@@ -9,6 +9,7 @@ module.exports = {
         alias: {
           src: './src',
           theme: ['./src/theme'],
+          mock: ['./src/_mock_'],
           screens: ['./src/screens'],
           // constants: ['./src/constants'],
           navigation: ['./src/navigation'],

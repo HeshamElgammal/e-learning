@@ -14,19 +14,15 @@ const HeaderTab = ({selectedBar, setSelectedBar}) => {
           }}>
           <Text style={styles.title(selectedBar, 'Courses')}>Courses</Text>
         </TouchableOpacity>
+
         <TouchableOpacity
-          style={styles.btn(selectedBar, 'Quizes')}
+          style={styles.btn(selectedBar, 'Comunities')}
           onPress={() => {
-            setSelectedBar('Quizes');
+            setSelectedBar('Comunities');
           }}>
-          <Text style={styles.title(selectedBar, 'Quizes')}>Quizes</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.btn(selectedBar, 'Members')}
-          onPress={() => {
-            setSelectedBar('Members');
-          }}>
-          <Text style={styles.title(selectedBar, 'Members')}>Members</Text>
+          <Text style={styles.title(selectedBar, 'Comunities')}>
+            Comunities
+          </Text>
         </TouchableOpacity>
       </View>
     </>
@@ -49,7 +45,7 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
   btn: (selectedBar, bar) => ({
-    width: '30%',
+    width: '45%',
     height: '100%',
     alignItems: 'center',
     justifyContent: 'center',

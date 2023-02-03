@@ -8,3 +8,7 @@ export const FAILED_SIGN_IN = 'FAILED_SIGN_IN';
 // user 
 export const UPDATE_PROFILE_DATA = 'UPDATE_PROFILE_DATA';
 export const SAVE_USER = 'SAVE_USER';
+
+
+export const SEARCH="SEARCH"
+export const THEME="THEME"

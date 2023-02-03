@@ -12,7 +12,9 @@ export const RnSpinner = ({size = 'm', color = '#061721'}) => (
       justifyContent: 'center',
       backgroundColor: appColors.white,
     }}
-    titleHeader="">
+    titleHeader=""
+    hideDrawer={true}
+    >
     <Spinner
       style={{
         // position: 'absolute',

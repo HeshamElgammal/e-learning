@@ -9,14 +9,40 @@ import React, {useMemo, useEffect} from 'react';
 import * as Animatable from 'react-native-animatable';
 
 import {RnSpinner} from 'components/spinner/Spinner';
-import {List} from 'svgs';
-import {appColors, Fonts} from 'theme';
+import {List as ListIcon} from 'svgs';
+import {appColors, appSizes, Fonts} from 'theme';
 import {useRoute} from '@react-navigation/native';
+import List from './lib/list';
+import DrawerView from 'screens/DrawerView';
+import {questions} from 'mock/Dumy';
+import {RFValue} from 'react-native-responsive-fontsize';
 
 const Quizes = ({navigation, route}) => {
   const {params} = useRoute();
   const [Loading, setLoading] = React.useState(true);
-
+  const [Questions, setQuestions] = React.useState(questions);
+  const [minutes, setMinutes] = React.useState(5);
+  const [seconds, setSeconds] = React.useState(0);
+  const [wait, setWait] = React.useState(false);
+  React.useEffect(() => {
+    let myInterval = setInterval(() => {
+      if (seconds > 0) {
+        setSeconds(seconds - 1);
+      }
+      if (seconds === 0) {
+        if (minutes === 0) {
+          clearInterval(myInterval);
+          setWait(true);
+        } else {
+          setMinutes(minutes - 1);
+          setSeconds(59);
+        }
+      }
+    }, 1000);
+    return () => {
+      clearInterval(myInterval);
+    };
+  }, [minutes, seconds]);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -24,7 +50,7 @@ const Quizes = ({navigation, route}) => {
     return () => {
       setLoading(true);
     };
-  }, [navigation, params?.course?.title]);
+  }, [navigation, params?.quize?.title]);
 
   const content = useMemo(
     () => (
@@ -32,9 +58,11 @@ const Quizes = ({navigation, route}) => {
         useNativeDriver
         delay={1000}
         animation="fadeIn"
-        style={[styles.container2]}></Animatable.View>
+        style={[styles.container2]}>
+        <List data={Questions} setQuestions={setQuestions} />
+      </Animatable.View>
     ),
-    [navigation, route, params?.course?.title],
+    [navigation, route, params?.quize?.title, Questions],
   );
   if (Loading) {
     return <RnSpinner />;
@@ -42,21 +70,24 @@ const Quizes = ({navigation, route}) => {
 
   return (
     <>
-      <View style={[styles.container1]}>
-        <View style={[styles.header]}>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.toggleDrawer();
-            }}>
-            <List style={styles.iconHeader} width={35} height={40} />
-          </TouchableOpacity>
-          <Text style={styles.titleHeader}>{`${params?.course?.title}`}</Text>
-          <View style={styles.iconHeader} />
+      <DrawerView
+        style={[styles.container1]}
+        titleHeader={params.quize.title}
+        hideDrawer={true}>
+        <View style={styles.TimerContainer}>
+          {minutes === 0 && seconds === 0 ? null : (
+            <Text
+              style={{
+                color: '#FFFFFF',
+                fontFamily: Fonts.PoppinsRegular,
+                fontSize: appSizes.l,
+              }}>
+              {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+            </Text>
+          )}
         </View>
-        <ScrollView style={{flex: 1, backgroundColor: appColors.white}}>
-          {content}
-        </ScrollView>
-      </View>
+        {content}
+      </DrawerView>
     </>
   );
 };
@@ -99,5 +130,18 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '600',
     fontFamily: Fonts.PoppinsBoldItalic,
+  },
+  TimerContainer: {
+    width: RFValue(110),
+    height: RFValue(50),
+    backgroundColor: appColors.blue,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    right: 0,
+    top: RFValue(50),
+    zIndex: 1000,
+    borderBottomLeftRadius: 10,
+    borderTopLeftRadius: 10,
   },
 });

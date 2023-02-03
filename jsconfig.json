@@ -16,6 +16,8 @@
       "paths": {
         // "api": ["./src/api/index.ts"],
         // "api/*": ["./src/api/*"],
+        "mock": ["./src/_mock_/index.js"],
+        "mock/*": ["./src/_mock_/*"],
         "components": ["./src/components/index.js"],
         "components/*": ["./src/components/*"],
         "store": ["src/store/index.js"],

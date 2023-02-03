@@ -1,153 +1,134 @@
 import {
-    FlatList,
-    Image,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
-  } from 'react-native';
-  import React from 'react';
-  import {appColors, appSizes, Fonts} from 'theme';
-  import {RFValue} from 'react-native-responsive-fontsize';
-  import {Arabic, English, Math, Programming, Web} from 'imgs';
-  import {UnderLine} from 'components';
-  import {useNavigation} from '@react-navigation/native';
-  import {ScrollView} from 'react-native';
-  const list = [
-    {
-      title: 'Programming',
-      color: appColors.blue,
-      icon: Programming,
-      time: '3:20:0',
-    },
-    {title: 'Web', color: appColors.placeholder, icon: Math, time: '3:10:0'},
-    {title: 'Arabic', color: appColors.fifth, icon: Arabic, time: '1:00:0'},
-    {title: 'English', color: appColors.fourth, icon: English, time: '2:20:0'},
-    {title: 'Math', color: appColors.blue, icon: Programming, time: '5:10:10'},
-    {
-      title: 'Commonucation Skills',
-      color: appColors.placeholder,
-      icon: Math,
-      time: '3:0:0',
-    },
-  ];
-  const List = () => {
-    const {navigate} = useNavigation();
-    // const renderItem = ({item, index}) => {
-    //   return (
-    //     <TouchableOpacity
-    //       style={[
-    //         styles.renderItem(item.color),
-    //         // {marginRight: index % 2 == 0 ? appSizes.spacing_m : 0},
-    //         {marginRight: appSizes.spacing_m},
-    //       ]}
-    //       key={`index ${index}`}
-    //       onPress={() => {
-    //         navigate('CourseInfo', {course: item});
-    //       }}>
-    //       <Image source={item.icon} style={styles.icon} />
-    //       <Text style={styles.titleItem} numberOfLines={1}>
-    //         {item.title}
-    //       </Text>
-    //     </TouchableOpacity>
-    //   );
-    // };
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import React from 'react';
+import {appColors, appSizes, Fonts} from 'theme';
+import {RFValue} from 'react-native-responsive-fontsize';
+
+import {useNavigation} from '@react-navigation/native';
+
+const List = ({data, setQuestions}) => {
+  const {navigate} = useNavigation();
+  const renderItem = ({item, index}) => {
     return (
-      <View style={styles.container}>
-        <Text style={[styles.titlee(appColors.primary), {marginBottom: 0}]}>
-          Our Courses
+      <View
+        style={[styles.renderItem(), {marginRight: appSizes.spacing_m}]}
+        key={`index ${index}`}>
+        <Text style={styles.titleItem} numberOfLines={1}>
+          {item.title}
         </Text>
-        <UnderLine />
-        {/* <FlatList
-          // numColumns={2}
-          nestedScrollEnabled
-          alwaysBounceHorizontal
-          horizontal
-          renderItem={renderItem}
-          data={list}
-          style={{
-            // height: appSizes.height / 1.55,
-            width: '100%',
-            // justifyContent:"space-between"
-          }}
-          contentContainerStyle={{
-            paddingBottom: 20,
-            // flex:1
-          }}
-        /> */}
-        <ScrollView
-          nestedScrollEnabled
-          style={{width: '100%', height: 300, paddingTop: 10}}
-          horizontal>
-          <View
-            style={styles.listContainer}>
-            {list.map((item, index) => (
-              <TouchableOpacity
-                style={[
-                  styles.renderItem(item.color),
-                  // {marginRight: index % 2 == 0 ? appSizes.spacing_m : 0},
-                  {marginRight: appSizes.spacing_m},
-                ]}
-                key={`index ${index}`}
-                onPress={() => {
-                  navigate('Quizes', {course: item});
-                }}>
-                <Image source={item.icon} style={styles.icon} />
-                <Text style={styles.titleItem} numberOfLines={1}>
-                  {item.title}
-                </Text>
-              </TouchableOpacity>
-            ))}
-          </View>
-        </ScrollView>
+        {item.answers.map((ans, indx) => (
+          <>
+            <TouchableOpacity
+              style={[
+                styles.btnAnswer,
+                {
+                  backgroundColor: ans.selected
+                    ? appColors.blue
+                    : appColors.white,
+                  // ans.selected
+                  //   ? ans.selected == ans.right
+                  //     ? appColors.blue
+                  //     : appColors.error
+                  //   : appColors.white,
+                },
+              ]}
+              onPress={() => {
+                let newData = [...data];
+                newData[index].answers.map((a, n) => {
+                  newData[index].answers[n].selected = false;
+                });
+                newData[index].answers[indx].selected =
+                  !newData[index].answers[indx].selected;
+                setQuestions([...newData]);
+              }}>
+              <Text style={styles.titlee()}>{`${
+                indx + 1 + ')   ' + ans.answer
+              }`}</Text>
+            </TouchableOpacity>
+          </>
+        ))}
       </View>
     );
   };
-  
-  export default List;
-  
-  const styles = StyleSheet.create({
-    container: {
-      // width: '100%',
-      marginTop: appSizes.spacing_s,
-      marginBottom: RFValue(10),
-      // alignSelf: 'flex-start',
-      // height: RFValue(200),
-    },
-    titlee: color => ({
-      fontSize: 25,
-      color: color,
-      // marginLeft: appSizes.padding_l,
-      marginBottom: appSizes.spacing_m,
-      fontFamily: Fonts.PoppinsBoldItalic,
-    }),
-    renderItem: color => ({
-      width: RFValue(170),
-      height: RFValue(170),
-      backgroundColor: color,
-      // marginLeft: appSizes.spacing_m,
-      // marginRight: appSizes.spacing_m,
-      marginBottom: appSizes.spacing_s,
-      borderRadius: RFValue(20),
-      alignItems: 'center',
-    }),
-    icon: {
-      width: RFValue(100),
-      height: RFValue(100),
-      marginTop: appSizes.spacing_s,
-    },
-    titleItem: {
-      fontSize: RFValue(18),
-      color: appColors.white,
-      marginTop: RFValue(10),
-      fontFamily: Fonts.PoppinsRegular,
-    },
-    listContainer:{
-      width: '100%',
-      height: RFValue(180),
-      flexDirection: 'row',
-      alignItems: 'center',
-      
-    }
-  });
-  
+  return (
+    <View style={styles.container}>
+      <FlatList
+        nestedScrollEnabled
+        renderItem={renderItem}
+        data={data}
+        style={{
+          width: '100%',
+          marginTop:RFValue(50)
+          // backgroundColor:"#f00"
+        }}
+        contentContainerStyle={{
+          paddingBottom: 120,
+          width: '100%',
+        }}
+      />
+    </View>
+  );
+};
+
+export default List;
+
+const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    marginTop: appSizes.spacing_s,
+    marginBottom: RFValue(10),
+    // alignSelf: 'flex-start',
+    // height: RFValue(200),
+  },
+  titlee: color => ({
+    fontSize: appSizes.l,
+    color: color ?? appColors.placeholder,
+    // marginLeft: appSizes.padding_l,
+    // marginBottom: appSizes.spacing_m,
+    fontFamily: Fonts.PoppinsBoldItalic,
+  }),
+  renderItem: color => ({
+    width: '100%',
+    minHeight: RFValue(170),
+    backgroundColor: '#F2f3f4',
+    // marginLeft: appSizes.spacing_m,
+    // marginRight: appSizes.spacing_m,
+    marginBottom: appSizes.spacing_s,
+    borderRadius: RFValue(20),
+    alignItems: 'center',
+    borderRadius: 5,
+  }),
+  icon: {
+    width: RFValue(100),
+    height: RFValue(100),
+    marginTop: appSizes.spacing_s,
+  },
+  titleItem: {
+    fontSize: RFValue(18),
+    color: appColors.primary,
+    marginTop: RFValue(10),
+    fontFamily: Fonts.PoppinsRegular,
+    marginBottom: 20,
+  },
+  listContainer: {
+    width: '100%',
+    height: RFValue(180),
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  btnAnswer: {
+    width: '90%',
+    height: 50,
+    backgroundColor: appColors.white,
+    marginBottom: 5,
+    justifyContent: 'center',
+    paddingHorizontal: '2%',
+    borderRadius: 5,
+  },
+});

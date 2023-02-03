@@ -18,6 +18,7 @@ import {appSizes} from 'theme';
 import {RFValue} from 'react-native-responsive-fontsize';
 import {Banner} from 'imgs';
 import {useEffect} from 'react';
+import Search from './lib/Search';
 
 const Home = ({navigation}) => {
   useEffect(() => {
@@ -35,22 +36,22 @@ const Home = ({navigation}) => {
     <DrawerView
       navigation={navigation}
       // style={styles.container}
-      titleHeader="Home">
+      titleHeader="E-Learning">
       {/* <ScrollView style={{}} nestedScrollEnabled> */}
-        <View style={styles.container}>
-          <Header />
-
-          <View style={styles.mainContainer}>
-            <Animated.Image
-              style={[styles.imgBanner, animatedStyle]}
-              source={Banner}
-              resizeMethod="resize"
-              resizeMode="cover"
-            />
-          </View>
-          <List page="CourseInfo" title="Our Courses" />
-          <List page="Quizes" title="Our Quizes" />
+      <View style={styles.container}>
+        <Header />
+        <Search />
+        <View style={styles.mainContainer}>
+          <Animated.Image
+            style={[styles.imgBanner, animatedStyle]}
+            source={Banner}
+            resizeMethod="resize"
+            resizeMode="cover"
+          />
         </View>
+        <List page="CourseInfo" title="Our Courses" />
+        {/* <List page="Quizes" title="Our Quizes" /> */}
+      </View>
       {/* </ScrollView> */}
     </DrawerView>
   );
@@ -69,14 +70,16 @@ const styles = StyleSheet.create({
     width: appSizes.with / 1.6,
     height: '100%',
     // alignSelf: 'flex-start',
+    alignSelf: 'center',
   },
   mainContainer: {
-    width: appSizes.with / 1.1,
+    width: '90%',
     height: RFValue(100),
     borderRadius: RFValue(10),
     overflow: 'hidden',
     backgroundColor: '#eee',
-    alignItems:"center",
-    marginLeft:appSizes.spacing_m
+    alignItems: 'center',
+    alignSelf: 'center',
+    // marginLeft: appSizes.spacing_m,
   },
 });

@@ -8,7 +8,8 @@ import CourseInfo from './main/CourseInfo/CourseInfo';
 import Community from './main/Community/Community';
 import Communities from './main/Communities/Communities';
 import Quizes from './main/quizes/quizes';
-// // export * from './main/home';
+import Search from './main/Search/Search';
+// export Search from './main/home';
 // // export * from './main/notifications';
 export {
   Home,
@@ -20,5 +21,6 @@ export {
   CourseInfo,
   Community,
   Communities,
-  Quizes
+  Quizes,
+  Search
 };

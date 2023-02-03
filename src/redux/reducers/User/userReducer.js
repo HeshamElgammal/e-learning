@@ -12,6 +12,7 @@ const INITIAL_STATE = {
   user: null,
   phone: null,
   fcmToken: '',
+ 
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {

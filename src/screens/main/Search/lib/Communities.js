@@ -1,0 +1,110 @@
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import React from 'react';
+import {useMemo} from 'react';
+import {appColors, appSizes} from '../../../../theme';
+import {RFValue} from 'react-native-responsive-fontsize';
+import {User} from '../../../../assets/svgs';
+
+const Comunities = ({comunities}) => {
+  const coms = useMemo(() => {
+    return (
+      <>
+        <FlatList
+          data={comunities}
+          contentContainerStyle={{
+            paddingBottom: appSizes.height / 2.6,
+            // height:"100%"
+          }}
+          renderItem={({item, index}) => {
+            return (
+              <>
+                <TouchableOpacity style={styles.itemContainer}>
+                  <Image
+                    source={{uri: item.img}}
+                    style={styles.img}
+                    resizeMethod="resize"
+                    resizeMode="cover"
+                  />
+                  <Text
+                    style={[
+                      styles.title,
+                      {fontWeight: '600', marginLeft: 2},
+                    ]}>{`${item.comunityName}`}</Text>
+                  <View
+                    style={{
+                      width: '100%',
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      // backgroundColor: '#f00',
+                      justifyContent: 'flex-start',
+                    }}>
+                    <User
+                      // source={{uri: 'https://picsum.photos/1850/800'}}
+                      width={40}
+                      height={40}
+                      style={[
+                        styles.img,
+                        {
+                          width: RFValue(30),
+                          height: RFValue(30),
+                          marginLeft: 0,
+                        },
+                      ]}
+                    />
+                    <Text style={styles.title}>{`${item.creator}`}</Text>
+                  </View>
+                </TouchableOpacity>
+              </>
+            );
+          }}
+        />
+      </>
+    );
+  }, [comunities]);
+  return (
+    <>
+      <View style={styles.listContainer}>{coms}</View>
+    </>
+  );
+};
+
+export default Comunities;
+
+const styles = StyleSheet.create({
+  listContainer: {
+    width: '97%',
+    marginTop: appSizes.spacing_m,
+  },
+  itemContainer: {
+    width: '95%',
+    // height: RFValue(65),
+    // alignItems: 'center',
+    // flexDirection: 'row',
+    borderRadius: appSizes.m,
+    backgroundColor: '#eee',
+    paddingHorizontal: appSizes.padding_s,
+    marginBottom: appSizes.l,
+    alignSelf: 'center',
+    paddingVertical: 10,
+  },
+  img: {
+    width: '100%',
+    height: 300,
+    alignSelf: 'center',
+    borderRadius: appSizes.m,
+    marginHorizontal: appSizes.spacing_s,
+    marginVertical: appSizes.spacing_s,
+  },
+  title: {
+    fontSize: RFValue(12),
+    color: appColors.primary,
+    textAlign: 'left',
+  },
+});
