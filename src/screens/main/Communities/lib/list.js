@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     color: color,
     // marginLeft: appSizes.padding_l,
     marginBottom: appSizes.spacing_m,
-    fontFamily: Fonts.PoppinsBoldItalic,
+    fontFamily: Fonts.PoppinsMedium,
     marginLeft: appSizes.spacing_m,
   }),
   renderItem: color => ({

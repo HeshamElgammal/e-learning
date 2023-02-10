@@ -137,7 +137,7 @@ const Form = () => {
             <Text style={[{color: '#a00', marginLeft: '5%', marginBottom: 30}]}>
               {formikProps.touched.term && formikProps.errors.term}
             </Text> */}
-          <CustomBtnAuth title="Sign up" formikProps={formikProps} />
+          <CustomBtnAuth title="SIGN UP" formikProps={formikProps} />
         </>
       )}
     </Formik>

@@ -6,6 +6,8 @@ import {
   createStackNavigator,
 } from '@react-navigation/stack';
 import {Login, SignUp} from 'screens';
+import ForgetPassword from 'screens/auth/forgetPassword/ForgetPassword';
+import Verify from 'screens/auth/verify/Verify';
 
 const Stack = createSharedElementStackNavigator();
 const AuthStack = () => {
@@ -18,6 +20,8 @@ const AuthStack = () => {
       
       >
       <Stack.Screen component={Login} name="Login" />
+      <Stack.Screen component={Verify} name="verify" />
+      <Stack.Screen component={ForgetPassword} name="forgetPassword" />
       <Stack.Screen component={SignUp} name="SignUp" />
     </Stack.Navigator>
   );

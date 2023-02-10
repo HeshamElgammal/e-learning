@@ -29,7 +29,7 @@ const List = ({data, setQuestions}) => {
                 styles.btnAnswer,
                 {
                   backgroundColor: ans.selected
-                    ? appColors.blue
+                    ? appColors.whiteBlue
                     : appColors.white,
                   // ans.selected
                   //   ? ans.selected == ans.right
@@ -64,11 +64,12 @@ const List = ({data, setQuestions}) => {
         data={data}
         style={{
           width: '100%',
-          marginTop:RFValue(50)
+          marginTop:RFValue(50),
+          height:appSizes.height/1.4
           // backgroundColor:"#f00"
         }}
         contentContainerStyle={{
-          paddingBottom: 120,
+          paddingBottom: 20,
           width: '100%',
         }}
       />
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
     color: color ?? appColors.placeholder,
     // marginLeft: appSizes.padding_l,
     // marginBottom: appSizes.spacing_m,
-    fontFamily: Fonts.PoppinsBoldItalic,
+    fontFamily: Fonts.PoppinsMedium,
   }),
   renderItem: color => ({
     width: '100%',

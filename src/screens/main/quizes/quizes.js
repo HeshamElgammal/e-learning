@@ -16,6 +16,7 @@ import List from './lib/list';
 import DrawerView from 'screens/DrawerView';
 import {questions} from 'mock/Dumy';
 import {RFValue} from 'react-native-responsive-fontsize';
+import {CustomBtnAuth} from 'components';
 
 const Quizes = ({navigation, route}) => {
   const {params} = useRoute();
@@ -86,7 +87,18 @@ const Quizes = ({navigation, route}) => {
             </Text>
           )}
         </View>
+
         {content}
+        <CustomBtnAuth
+          title="SUBMIT"
+          formikProps={{
+            handleSubmit: () => {
+              navigation.navigate('Home');
+            },
+            isSubmitting: false,
+          }}
+          style={styles.btn}
+        />
       </DrawerView>
     </>
   );
@@ -129,12 +141,12 @@ const styles = StyleSheet.create({
     color: appColors.primary,
     fontSize: 20,
     fontWeight: '600',
-    fontFamily: Fonts.PoppinsBoldItalic,
+    fontFamily: Fonts.PoppinsMedium,
   },
   TimerContainer: {
     width: RFValue(110),
     height: RFValue(50),
-    backgroundColor: appColors.blue,
+    backgroundColor: appColors.primary,
     position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
@@ -143,5 +155,9 @@ const styles = StyleSheet.create({
     zIndex: 1000,
     borderBottomLeftRadius: 10,
     borderTopLeftRadius: 10,
+  },
+  btn: {
+    width: appSizes.with / 1.1,
+    borderRadius: appSizes.spacing_s,
   },
 });

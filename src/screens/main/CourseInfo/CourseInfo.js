@@ -68,7 +68,9 @@ const CourseInfo = ({navigation, route}) => {
               }}>
               <List style={styles.iconHeader} width={35} height={40} />
             </TouchableOpacity>
-            <Text style={styles.titleHeader}>{`${params?.course?.title}`}</Text>
+            <Text style={styles.titleHeader}>{`${
+              params?.course?.title ?? params?.course?.courseName
+            }`}</Text>
             <View style={styles.iconHeader} />
           </View>
         )}
@@ -117,7 +119,6 @@ const styles = StyleSheet.create({
     color: appColors.primary,
     fontSize: 20,
     fontWeight: '600',
-    fontFamily: Fonts.PoppinsBoldItalic,
-
+    fontFamily: Fonts.PoppinsMedium,
   },
 });

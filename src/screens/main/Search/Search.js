@@ -18,7 +18,7 @@ const Search = () => {
         <Courses
           Courses={[
             {
-              title: 'Ui/Ux',
+              courseName: 'Ui/Ux',
               time: '3:20:0',
               creator: 'hesham',
               img: `https://plus.unsplash.com/premium_photo-1661539032823-e60652a0885d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGNvZGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60`,

@@ -23,15 +23,7 @@ import {
   // Notification,
   // Setting,
 } from 'imgs';
-import {
-  Setting,
-  Home,
-  Exit,
-  Notification,
-  User,
-  List,
-  Community,
-} from 'svgs';
+import {Setting, Home, Exit, Notification, User, List, Community} from 'svgs';
 import {useDispatch} from 'react-redux';
 import {changeAuth} from '../redux/actions/AuthActions/changeAuth';
 import {AUTHENTICATIONS} from 'config';
@@ -40,11 +32,12 @@ const {width, height} = Dimensions.get('window');
 const CustomDrawer = ({style, navigation}) => {
   const dispatch = useDispatch();
   const list = [
-    {label: 'Home', Icon: Home},
-    {label: 'Settings', Icon: Setting},
+    {label: 'Home', page: 'Home', Icon: Home},
+    // {label: 'Settings', page: 'Settings', Icon: Setting},
     // {label: 'Activities', Icon: Activity},
-    {label: 'Notifications', Icon: Notification},
-    {label: 'Communities', Icon: Community},
+    {label: 'Notifications', page: 'Notifications', Icon: Notification},
+    {label: 'Communities', page: 'Communities', Icon: Community},
+    // {label: 'Create Community', page: 'AddCommunity', Icon: Community},
   ];
   const list2 = ['React', 'AI', 'Skills', 'Languages', 'Data'];
   const [selected, setSelected] = useState({page: 0, tetorial: null});
@@ -96,7 +89,7 @@ const CustomDrawer = ({style, navigation}) => {
                     setSelected(prev => ({...prev, ['page']: index}));
                     setSelected(prev => ({...prev, ['tetorial']: null}));
 
-                    navigation.navigate(item.label);
+                    navigation.navigate(item.page);
                   }}>
                   {/* <Image style={styles.imgIcon} source={item.icon} /> */}
                   <item.Icon style={styles.imgIcon} width={30} height={30} />
@@ -131,7 +124,7 @@ const CustomDrawer = ({style, navigation}) => {
                   onPress={() => {
                     setSelected(prev => ({...prev, ['tetorial']: index}));
                     setSelected(prev => ({...prev, ['page']: null}));
-                    navigation.navigate('Community',{community:item});
+                    navigation.navigate('Community', {community: item});
                   }}>
                   <Image
                     style={[
@@ -196,8 +189,7 @@ const styles = StyleSheet.create({
     color: appColors.primary,
     fontSize: 18,
     fontWeight: '600',
-    fontFamily: Fonts.PoppinsBold,
-    
+    fontFamily: Fonts.PoppinsMedium,
   },
   section: {
     backgroundColor: '#FFFF',
@@ -229,8 +221,7 @@ const styles = StyleSheet.create({
     color: appColors.input,
     fontSize: 16,
     fontWeight: '500',
-    fontFamily: Fonts.PoppinsExtraBoldItalic,
-
+    fontFamily: Fonts.PoppinsRegular,
   },
   footer: {
     alignItems: 'center',

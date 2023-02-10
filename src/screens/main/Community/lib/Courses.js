@@ -8,11 +8,13 @@ import {
 } from 'react-native';
 import React from 'react';
 import {useMemo} from 'react';
-import {appColors, appSizes} from '../../../../theme';
+import {appColors, appSizes} from 'theme';
 import {RFValue} from 'react-native-responsive-fontsize';
-import {User} from '../../../../assets/svgs';
+import {User} from 'svgs';
+import {useNavigation} from '@react-navigation/native';
 
 const Courses = ({Courses}) => {
+  const {navigate} = useNavigation();
   const Coursess = useMemo(() => {
     return (
       <>
@@ -25,7 +27,11 @@ const Courses = ({Courses}) => {
           renderItem={({item, index}) => {
             return (
               <>
-                <TouchableOpacity style={styles.itemContainer}>
+                <TouchableOpacity
+                  style={styles.itemContainer}
+                  onPress={() => {
+                    navigate('CourseInfo', {course: item});
+                  }}>
                   <Image
                     source={{uri: item.img}}
                     style={styles.img}

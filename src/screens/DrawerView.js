@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     color: appColors.primary,
     fontSize: 20,
     fontWeight: '600',
-    fontFamily: Fonts.PoppinsBoldItalic,
+    fontFamily: Fonts.PoppinsMedium,
   },
   icon: {
     width: 40,

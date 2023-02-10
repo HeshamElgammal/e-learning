@@ -16,6 +16,7 @@ import {
 import {interpolate, useAnimatedStyle} from 'react-native-reanimated';
 import CustomDrawer from 'src/drawer/CustomDrawer';
 import Main from './Main';
+import AddCommunity from 'screens/main/AddCommunity/AddCommunity';
 
 const Drawer = createDrawerNavigator();
 const DrawerNavigation = () => {
@@ -42,6 +43,7 @@ const DrawerNavigation = () => {
       <Drawer.Screen name="Communities" component={Communities} />
       <Drawer.Screen name="Quizes" component={Quizes} />
       <Drawer.Screen name="Search" component={Search} />
+      <Drawer.Screen name="AddCommunity" component={AddCommunity} />
 
       <Drawer.Screen name="Settings" component={Setting} />
       <Drawer.Screen name="Activities" component={Activity} />

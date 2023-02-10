@@ -10,6 +10,7 @@ const OrDividor = ({title, subTitle, press}) => {
         <Text style={styles.title(appColors.primary)}>Or</Text>
         <View style={styles.dividor} />
       </View>
+    
       <Text
         style={[
           styles.title(appColors.blue),
@@ -26,6 +27,7 @@ const OrDividor = ({title, subTitle, press}) => {
           {subTitle}
         </Text>
       </Text>
+      
     </View>
   );
 };
@@ -51,4 +53,6 @@ const styles = StyleSheet.create({
     color: color,
     fontSize: 18,
   }),
+  
+
 });

@@ -55,7 +55,7 @@ const Community = ({navigation, route}) => {
           ]}
         />
       )}
-      {selectedBar == 'Members' && (
+      {/* {selectedBar == 'Members' && (
         <Members
           Members={[
             {
@@ -65,7 +65,7 @@ const Community = ({navigation, route}) => {
             {member: 'Hesham', img: `https://unsplash.com/photos/9yIWxiSswnQ`},
           ]}
         />
-      )}
+      )} */}
       {selectedBar == 'Quizes' && (
         <Quizes
           quizes={[

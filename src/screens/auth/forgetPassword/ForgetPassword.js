@@ -15,26 +15,21 @@ import {appColors} from 'theme/colorTheme';
 import Form from './lib/Form';
 import Header from './lib/Header';
 import {OrDividor} from 'components';
-const Login = ({navigation}) => {
+const ForgetPassword = ({navigation}) => {
   return (
     <ScrollView style={styles.container}>
       <SafeAreaView style={styles.container}>
-        <Header title="Welcome!" subTitle="Sign in to continue" />
-        <Form />
-        
-        <OrDividor
-          title="Don't have an account?"
-          subTitle="Sign up"
-          press={() => {
-            navigation.navigate('SignUp');
-          }}
+        <Header
+          title="Forgot Your Password?"
+          subTitle="Just enter your phone number and an SMS will be sent to your email"
         />
+        <Form />
       </SafeAreaView>
     </ScrollView>
   );
 };
 
-export default Login;
+export default ForgetPassword;
 
 const styles = StyleSheet.create({
   container: {
@@ -50,5 +45,4 @@ const styles = StyleSheet.create({
     color: appColors.input,
     marginLeft: '5%',
   },
- 
 });

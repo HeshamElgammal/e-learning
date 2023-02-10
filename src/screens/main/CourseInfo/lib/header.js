@@ -26,7 +26,7 @@ const Header = props => {
       />
       {!props?.isFullScreen && (
         <Text
-          style={styles.title}>{`${course?.title}  -  ${course.time}`}</Text>
+          style={styles.title}>{`${course?.title??course?.courseName}  -  ${course.time}`}</Text>
       )}
       {/* <TouchableOpacity
         style={{
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: appSizes.l - 5,
     lineHeight: 25,
-    fontFamily: Fonts.PoppinsBoldItalic,
+    fontFamily: Fonts.PoppinsMedium,
 
   },
   img: {

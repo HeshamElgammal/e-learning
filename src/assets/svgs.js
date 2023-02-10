@@ -9,5 +9,21 @@ import Play from './svgs/play.svg';
 import Down from './svgs/down.svg';
 import VideoPlay from './svgs/video-play.svg';
 import VideoPlayy from './svgs/playy.svg';
+import Plus from './svgs/plus.svg';
+import NOTIFICATION from './svgs/no-notification.svg';
 
-export {Home, Setting, Notification, List, User, Exit, Community,Down,Play,VideoPlay,VideoPlayy};
+export {
+  Home,
+  Setting,
+  Notification,
+  List,
+  User,
+  Exit,
+  Community,
+  Down,
+  Play,
+  VideoPlay,
+  VideoPlayy,
+  Plus,
+  NOTIFICATION,
+};

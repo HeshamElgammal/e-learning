@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: appSizes.l - 5,
     lineHeight: 25,
-    fontFamily: Fonts.PoppinsBoldItalic,
+    fontFamily: Fonts.PoppinsMedium,
 
   },
   img: {

@@ -17,35 +17,22 @@ import {changeAuth} from '../../../../redux/actions/AuthActions/changeAuth';
 import {appColors} from 'theme/colorTheme';
 import {AUTHENTICATIONS} from 'config';
 import {CustomBtnAuth, CustomTextInput} from 'components';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 const Form = () => {
-  const {navigate} = useNavigation();
   const dispatch = useDispatch();
+  const {navigate}=useNavigation()
   const createValidationSchema = Yup.object().shape({
     email: Yup.string().label('Email').email().required(),
-    password: Yup.string()
-      .label('Password')
-      .required()
-      .min(2, 'Seems a bit Short..')
-      .max(15, 'max 15 character..'),
-
-    // term: Yup.boolean()
-    //   .label('Terms')
-    //   .test(
-    //     'is-true',
-    //     'Must Agree to terms to continue',
-    //     value => value === true,
-    //   ),
   });
   console.log(initialValues);
-  const initialValues = {email: '', password: '', term: false};
+  const initialValues = {email: ''};
   const onSubmit = (values, actions) => {
     setTimeout(() => {
       actions.setSubmitting(false);
     }, 1000);
-    dispatch(saveUser(values));
-    dispatch(changeAuth(AUTHENTICATIONS.AUTHENTICATED));
+    // dispatch(());
+    navigate("verify")
   };
   return (
     <Formik
@@ -55,7 +42,7 @@ const Form = () => {
       {formikProps => (
         <>
           <CustomTextInput
-            placeholder="johndoe@example.com"
+            placeholder="johndee@example.com"
             onChangeText={formikProps.handleChange('email')}
             onBlur={formikProps.handleBlur('email')}
             autoFocus
@@ -64,20 +51,6 @@ const Form = () => {
             error={formikProps.errors.email}
           />
 
-          <CustomTextInput
-            placeholder="******"
-            formikProps={formikProps}
-            onChangeText={formikProps.handleChange('password')}
-            onBlur={formikProps.handleBlur('password')}
-            touched={formikProps.touched.password}
-            error={formikProps.errors.password}
-            secureTextEntry
-          />
-          <Text
-            style={styles.forgetTitle}
-            onPress={() => navigate('forgetPassword')}>
-            Forget Password ?
-          </Text>
           {/* <Switch
             value={formikProps.values.term}
             trackColor="#a00"
@@ -91,7 +64,7 @@ const Form = () => {
           <Text style={[{color: '#a00', marginLeft: '5%', marginBottom: 30}]}>
             {formikProps.touched.term && formikProps.errors.term}
           </Text> */}
-          <CustomBtnAuth title="SIGN IN" formikProps={formikProps} />
+          <CustomBtnAuth title="SEND SMS" formikProps={formikProps} />
         </>
       )}
     </Formik>
@@ -108,15 +81,5 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     color: appColors.input,
     marginLeft: '5%',
-  },
-  forgetTitle: {
-    color: appColors.primary,
-    fontSize: 15,
-    right: '5%',
-    textAlign: 'right',
-    marginTop: -15,
-    marginBottom: 15,
-    textDecorationLine: 'underline',
-    textDecorationColor: appColors.placeholder,
   },
 });

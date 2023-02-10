@@ -11,9 +11,9 @@ import {appColors} from '../../theme/colorTheme';
 const CustomBtnAuth = ({formikProps, title, press, style}) => {
   return (
     <TouchableOpacity
-      onPress={formikProps.handleSubmit}
-      disabled={formikProps.isSubmitting}
-      style={[styles.btn]}>
+      onPress={formikProps?.handleSubmit}
+      disabled={formikProps?.isSubmitting}
+      style={[styles.btn,style]}>
       {formikProps.isSubmitting ? (
         <ActivityIndicator size="large" color={appColors.primary} />
       ) : (
